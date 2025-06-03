@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('measurements', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_id')->constrained()->onDelete('cascade');
             $table->integer('width');
             $table->integer('height');
+            $table->integer('gaps');
             $table->timestamps();
         });
     }

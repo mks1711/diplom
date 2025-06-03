@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class measurement_request extends FormRequest
+class authRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,14 @@ class measurement_request extends FormRequest
     public function rules()
     {
         return [
-            'width'=>'required',
-            'height'=>'required',
+            'FIO' => 'required',
+            'password' => 'required',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'required' => 'Это поле обязательно для заполнения',
         ];
     }
 }

@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\auth_request;
+use App\Http\Requests\AuthRequest;
 use App\Http\Requests\RegistrationRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class userController extends Controller
+class UserController extends Controller
 {
-    public function auth_post(auth_request $request){
+    public function auth_post(AuthRequest $request){
         if(Auth::attempt($request->validated())){
             $request->session()->regenerate();
             return redirect()->route('/');

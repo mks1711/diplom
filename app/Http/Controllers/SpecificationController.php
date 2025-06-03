@@ -2,20 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\specification_request;
+use App\Http\Requests\specificationRequest;
+use App\Models\order;
 use App\Models\specification;
 use Illuminate\Http\Request;
 
 class SpecificationController extends Controller
 {
-    public function create_specification(specification_request $request)
+    public function create_specification(specificationRequest $request)
     {
-        $requests=$request->validated();
-        specification::create($requests);
-        return redirect()->route('list_order');
+        $requests = $request->validated();
+        Specification::create($requests);
+        return redirect()->route('list_order_full');
     }
-    public function SpecificationView(){
-        $spec = specification::all();
-        return view('Orders.specifications', compact('spec'));
+    public function SpecificationView()
+    {
+
+        $orders = Order::doesntHave('specifications')->get();
+
+        return view('orders.specifications', compact('orders'));
     }
+
 }

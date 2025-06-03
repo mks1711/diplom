@@ -14,9 +14,12 @@ Route::view('/authorization', 'User.auth')->name('auth');
 Route::post('/authorization', [UserController::class, 'auth_post']);
 
 Route::get('/create_order', [OrderController::class,'showStatus'])->name('show_status');
-Route::post('/create_order', [OrderController::class,'Create_order'])->name('create_order');
-Route::get('/list_order', [OrderController::class, 'OrderView'])->name('list_order');
-Route::view('/list_order_full', 'Orders.list_order_full')->name('list_order_full');
+Route::post('/create_order', [OrderController::class,'createOrder'])->name('create_order');
+Route::get('/list_order', [OrderController::class, 'listOrders'])->name('list_order');
+Route::get('/orders/full', [OrderController::class, 'listOrderFull'])->name('list_order_full');
+Route::post('/update-status', [OrderController::class, 'updateStatus'])->name('update_status');
+
+
 
 Route::get('/create_user', [userController::class,'showForm'])->name('show');
 Route::post('/create_user', [userController::class,'registr_post'])->name('create_user');
@@ -27,7 +30,7 @@ Route::get('/measurement',[MeasurementController::class, 'MeasurementView'] )->n
 Route::post('/measurement',[MeasurementController::class, 'create_measurement'] )->name('measurement_create');
 
 Route::get('/specification',[SpecificationController::class, 'SpecificationView'] )->name('specification');
-Route::post('/specification',[SpecificationController::class, 'create_specification'] )->name('specification_create');
+Route::post('/specification',[SpecificationController::class, 'create_specification'] )->name('create_specification');
 
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [userController::class, 'logout'])->name('logout');
