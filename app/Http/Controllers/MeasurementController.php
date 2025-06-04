@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\measurementRequest;
-use App\Models\measurement;
-use App\Models\order;
+use App\Http\Requests\MeasurementRequest;
+use App\Models\Measurement;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class MeasurementController extends Controller
 {
-    public function create_measurement(measurementRequest $request)
+    public function create_measurement(MeasurementRequest $request)
     {
         $requests=$request->validated();
         measurement::create($requests);

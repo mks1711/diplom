@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\createOrderRequest;
-use App\Models\order;
+use App\Http\Requests\CreateOrderRequest;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -20,7 +20,7 @@ class OrderController extends Controller
         return view('orders.create_order', compact('statuses'));
     }
 
-    public function createOrder(createOrderRequest $request)
+    public function createOrder(CreateOrderRequest $request)
     {
         Order::create($request->validated());
         return redirect()->route('list_order');
